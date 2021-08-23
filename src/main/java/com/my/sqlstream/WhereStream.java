@@ -6,7 +6,7 @@ public class WhereStream extends GroupByStream {
         super(data);
     }
 
-    public GroupByStream groupBy(String column){
+    public GroupByStream GROUP_BY(String column){
         data.groupBy = "GROUP BY " + column;
         return this;
     }

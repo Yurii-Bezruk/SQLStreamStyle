@@ -38,7 +38,7 @@ public abstract class SQLStream {
         this.data = data;
     }
 
-    public static SelectStream select(String... columns){
+    public static SelectStream SELECT(String... columns){
         SelectStream select = new SelectStream();
         Collections.addAll(select.data.select, columns);
         return select;

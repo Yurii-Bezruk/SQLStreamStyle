@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class SelectStream extends SQLStream {
 
-    public FromStream from(String table){
+    public FromStream FROM(String table){
         data.from.append(table);
         return new FromStream(data);
     }

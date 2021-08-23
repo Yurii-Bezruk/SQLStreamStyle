@@ -7,7 +7,7 @@ public class JoinStrictStream {
         this.data = data;
     }
 
-    public FromStream on(String onStatement){
+    public FromStream ON(String onStatement){
         data.from.append(" ON ").append(onStatement);
         return new FromStream(data);
     }

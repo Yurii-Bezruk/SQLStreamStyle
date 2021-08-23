@@ -4,7 +4,8 @@ public class GroupByStream extends HavingStream {
     public GroupByStream(SQLStreamData data) {
         super(data);
     }
-    public HavingStream having(String condition){
+
+    public HavingStream HAVING(String condition){
         data.having = "HAVING " + condition;
         return this;
     }

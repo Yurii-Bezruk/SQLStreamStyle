@@ -5,11 +5,11 @@ public class OrderByStream extends SQLStream {
         super(data);
     }
 
-    public LimitStream limit(long limit){
+    public LimitStream LIMIT(long limit){
         data.limit = "LIMIT " + Long.toString(limit);
         return new LimitStream(data);
     }
-    public SQLStream limit(long start, long limit){
+    public SQLStream LIMIT(long start, long limit){
         data.limit = "LIMIT " + Long.toString(start) + ", " + Long.toString(limit);
         return this;
     }

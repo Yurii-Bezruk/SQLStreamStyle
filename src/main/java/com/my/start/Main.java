@@ -7,15 +7,15 @@ public class Main {
     public static void main(String[] args) {
         List<Map<String, Object>> result;
         SQLStream stream = SQLStream
-                .select("user_with_dep.name", "department.name", "country.name")
-                .from("user_with_dep")
-                .rightJoin("department")
-                .on("user_with_dep.department = department.id")
-                .rightJoin("country")
-                .on("department.country = country.id")
-                .where("country.id > 1")
-                .groupBy("country.name")
-                .orderBy("department.name")
+                .SELECT("user_with_dep.name", "department.name", "country.name")
+                .FROM("user_with_dep")
+                .RIGHT_JOIN("department")
+                .ON("user_with_dep.department = department.id")
+                .RIGHT_JOIN("country")
+                .ON("department.country = country.id")
+                .WHERE("country.id > 1")
+                .GROUP_BY("country.name")
+                .ORDER_BY("department.name")
                 .asc()
                 .limit(2)
                 .offset(1);

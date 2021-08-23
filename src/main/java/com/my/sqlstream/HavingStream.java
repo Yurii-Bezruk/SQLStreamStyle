@@ -5,8 +5,8 @@ public class HavingStream extends OrderByStream {
         super(data);
     }
 
-    public OrderByStreamWithDirection orderBy(String column){
+    public OrderByStream ORDER_BY(String column){
         data.orderBy = "ORDER BY " + column;
-        return new OrderByStreamWithDirection(data);
+        return new OrderByStream(data);
     }
 }

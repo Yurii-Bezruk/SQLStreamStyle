@@ -5,7 +5,7 @@ public class LimitStream extends SQLStream {
         super(data);
     }
 
-    public SQLStream offset(long offset){
+    public SQLStream OFFSET(long offset){
         data.limit += " OFFSET " + Long.toString(offset);
         return this;
     }
