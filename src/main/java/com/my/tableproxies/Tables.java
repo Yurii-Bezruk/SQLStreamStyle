@@ -1,9 +1,11 @@
 package com.my.tableproxies;
 
-public class Tables {
+public final class Tables {
     public static final countryTable country = new countryTable();
     public static final departmentTable department = new departmentTable();
     public static final user_with_depTable user_with_dep = new user_with_depTable();
+
+    private Tables(){}
 
     public static class countryTable extends Table {
         public final Column id = new Column("id");

@@ -1,38 +1,14 @@
 package com.my.sqlstream;
 
+import com.my.start.TableMapper;
 import com.my.tableproxies.Table;
 
-import java.io.FileInputStream;
-import java.io.IOException;
 import java.sql.*;
 import java.util.*;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public abstract class SQLStream {
-    protected static String URL;
-    static {
-        Properties properties = new Properties();
-        try {
-            properties.load(new FileInputStream("app.properties"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        URL =
-            properties.getProperty("server.protocol") +
-            "://" +
-            properties.getProperty("server.address") +
-            ":" +
-            properties.getProperty("server.port") +
-            "/" +
-            properties.getProperty("server.schema") +
-            "?serverTimeZone=" +
-            properties.getProperty("server.timezone") +
-            "&user=" +
-            properties.getProperty("user.name") +
-            "&password=" +
-            properties.getProperty("user.password");
-    }
+    protected static String URL = TableMapper.getConnectionURL();
     protected SQLStreamData data;
 
     protected SQLStream() {
