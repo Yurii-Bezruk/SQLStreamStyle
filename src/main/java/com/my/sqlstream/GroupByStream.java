@@ -5,6 +5,7 @@ public class GroupByStream extends HavingStream {
         super(data);
     }
 
+    //TODO polymorphic calls to HAVING
     public HavingStream HAVING(String condition){
         data.having = "HAVING " + condition;
         return this;

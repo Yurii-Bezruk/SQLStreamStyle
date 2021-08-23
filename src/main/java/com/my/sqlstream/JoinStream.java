@@ -5,6 +5,7 @@ public class JoinStream extends FromStream {
         super(data);
     }
 
+    //TODO polymorphic calls to ON
     public FromStream ON(String onStatement){
         data.from.append(" ON ").append(onStatement);
         return new FromStream(data);

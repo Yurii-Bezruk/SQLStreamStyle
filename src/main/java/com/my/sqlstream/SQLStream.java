@@ -42,6 +42,9 @@ public abstract class SQLStream {
         this.data = data;
     }
 
+    public static SelectStream SELECT(Table.Column... columns){
+        return SELECT(Stream.of(columns).map(Table.Column::getColumnName).toArray(String[]::new));
+    }
     public static SelectStream SELECT(String... columns){
         SelectStream select = new SelectStream();
         Collections.addAll(select.data.select, columns);
