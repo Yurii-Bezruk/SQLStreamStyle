@@ -1,5 +1,8 @@
 package com.my.start;
+import static com.my.tableproxies.Tables.*;
 import com.my.sqlstream.SQLStream;
+import com.my.tableproxies.Tables;
+
 import java.util.List;
 import java.util.Map;
 
@@ -16,9 +19,8 @@ public class Main {
                 .WHERE("country.id > 1")
                 .GROUP_BY("country.name")
                 .ORDER_BY("department.name")
-                .asc()
-                .limit(2)
-                .offset(1);
+                .LIMIT(2)
+                .OFFSET(1);
         System.out.println(stream);
         result = stream.execute();
         result.forEach(System.out::println);

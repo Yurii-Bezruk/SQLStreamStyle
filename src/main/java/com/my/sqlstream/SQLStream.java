@@ -1,9 +1,13 @@
 package com.my.sqlstream;
 
+import com.my.tableproxies.Table;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.*;
 import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public abstract class SQLStream {
     protected static String URL;
