@@ -17,10 +17,8 @@ public class Main {
                 .RIGHT_JOIN(country)
                 .ON("department.country = country.id")
                 .WHERE("country.id > 1")
-                .GROUP_BY(country.name)
-                .ORDER_BY(department.name)
-                .LIMIT(2)
-                .OFFSET(1);
+                .GROUP_BY(country.name.ASC())
+                .ORDER_BY(department.name.DESC(), country.name.ASC());
         System.out.println(stream);
         result = stream.execute();
         result.forEach(System.out::println);
