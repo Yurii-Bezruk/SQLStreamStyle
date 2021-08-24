@@ -19,7 +19,7 @@ public class Main {
                 .WHERE("country.id > 1")
                 .GROUP_BY(country.name.ASC())
                 .ORDER_BY(department.name.DESC(), country.name.ASC());
-        System.out.println(stream);
+        System.out.println(stream.toFormattedString());
         result = stream.execute();
         result.forEach(System.out::println);
     }
