@@ -21,5 +21,23 @@ public class Table {
         public String getColumnName() {
             return _COLUMN_NAME_;
         }
+
+        public SortedColumn ASC(){
+            return new SortedColumn(_COLUMN_NAME_ + " ASC");
+        }
+        public SortedColumn DESC(){
+            return new SortedColumn(_COLUMN_NAME_ + " DESC");
+        }
+    }
+    public static class SortedColumn {
+        private final String _COLUMN_NAME_;
+
+        public SortedColumn(String name) {
+            _COLUMN_NAME_ = name;
+        }
+
+        public String getColumnName() {
+            return _COLUMN_NAME_;
+        }
     }
 }

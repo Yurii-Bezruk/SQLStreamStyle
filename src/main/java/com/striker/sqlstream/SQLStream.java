@@ -29,16 +29,27 @@ public abstract class SQLStream {
 
     @Override
     public String toString() {
-        StringBuilder builder = new StringBuilder("SELECT ");
-        return builder
-                .append(String.join(", ", data.select))
-                .append(" ").append(data.from)
-                .append(" ").append(data.where)
-                .append(" ").append(data.groupBy)
-                .append(" ").append(data.having)
-                .append(" ").append(data.orderBy)
-                .append(" ").append(data.limit)
-                .append(";").toString();
+        return "SELECT " +
+            String.join(", ", data.select) +
+            String.join(" ",
+                data.from,
+                data.where,
+                data.groupBy,
+                data.having,
+                data.orderBy,
+                data.limit) + ";";
+    }
+
+    public String toFormattedString() {
+        return "SELECT " +
+            String.join(", ", data.select) +
+            String.join("\n ",
+                data.from,
+                data.where,
+                data.groupBy,
+                data.having,
+                data.orderBy,
+                data.limit) + ";";
     }
 
     public List<Map<String, Object>> execute(){
