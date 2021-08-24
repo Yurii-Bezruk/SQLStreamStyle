@@ -1,7 +1,7 @@
-package com.my.sqlstream;
+package com.striker.sqlstream;
 
 
-import com.my.tableproxies.Table;
+import com.striker.tableproxies.Table;
 
 public class WhereStream extends GroupByStream {
     protected WhereStream(SQLStreamData data) {

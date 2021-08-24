@@ -1,7 +1,7 @@
-package com.my.sqlstream;
+package com.striker.sqlstream;
 
-import com.my.start.TableMapper;
-import com.my.tableproxies.Table;
+import com.striker.start.TableMapper;
+import com.striker.tableproxies.Table;
 
 import java.sql.*;
 import java.util.*;

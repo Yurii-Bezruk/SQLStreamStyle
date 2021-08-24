@@ -1,4 +1,4 @@
-package com.my.tableproxies;
+package com.striker.tableproxies;
 
 public class Table {
     private final String _TABLE_NAME_;

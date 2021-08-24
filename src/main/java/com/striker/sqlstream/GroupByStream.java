@@ -1,4 +1,4 @@
-package com.my.sqlstream;
+package com.striker.sqlstream;
 
 public class GroupByStream extends HavingStream {
     public GroupByStream(SQLStreamData data) {

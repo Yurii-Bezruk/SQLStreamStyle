@@ -1,4 +1,4 @@
-package com.my.sqlstream;
+package com.striker.sqlstream;
 
 public class LimitStream extends SQLStream {
     protected LimitStream(SQLStreamData data) {

@@ -1,6 +1,6 @@
-package com.my.sqlstream;
+package com.striker.sqlstream;
 
-import com.my.tableproxies.Table;
+import com.striker.tableproxies.Table;
 
 import java.util.List;
 import java.util.Map;
