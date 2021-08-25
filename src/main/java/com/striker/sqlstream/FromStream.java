@@ -22,6 +22,20 @@ public class FromStream extends WhereStream {
     public JoinStream JOIN(String table){
         return INNER_JOIN(table);
     }
+
+    public FromStream CROSS_JOIN(Table... tables){
+        return INNER_JOIN(tables);
+    }
+    public FromStream CROSS_JOIN(String... tables){
+        return INNER_JOIN(tables);
+    }
+    public JoinStream CROSS_JOIN(Table table){
+        return INNER_JOIN(table);
+    }
+    public JoinStream CROSS_JOIN(String table){
+        return INNER_JOIN(table);
+    }
+
     public FromStream INNER_JOIN(Table... tables){
         return INNER_JOIN(Stream.of(tables).map(Table::getTableName).toArray(String[]::new));
     }
