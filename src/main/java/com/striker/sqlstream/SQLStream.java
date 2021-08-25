@@ -18,6 +18,9 @@ public abstract class SQLStream {
         this.data = data;
     }
 
+    public static SelectStream SELECT(Table.SelectableColumn... columns){
+        return SELECT(Stream.of(columns).map(Table.SelectableColumn::getColumnName).toArray(String[]::new));
+    }
     public static SelectStream SELECT(Table.Column... columns){
         return SELECT(Stream.of(columns).map(Table.Column::getColumnName).toArray(String[]::new));
     }
@@ -30,7 +33,7 @@ public abstract class SQLStream {
     @Override
     public String toString() {
         return "SELECT " +
-            String.join(", ", data.select) +
+            String.join(", ", data.select) + " " +
             String.join(" ",
                 data.from,
                 data.where,
@@ -42,14 +45,18 @@ public abstract class SQLStream {
 
     public String toFormattedString() {
         return "SELECT " +
-            String.join(", ", data.select) +
-            String.join("\n ",
-                data.from,
-                data.where,
-                data.groupBy,
-                data.having,
-                data.orderBy,
-                data.limit) + ";";
+            String.join(", ", data.select) + "\n" +
+            String.join("\n",
+                Stream.of(
+                    data.from,
+                    data.where,
+                    data.groupBy,
+                    data.having,
+                    data.orderBy,
+                    data.limit)
+                    .filter(part -> !part.equals(""))
+                    .toArray(CharSequence[]::new)
+            ) + ";";
     }
 
     public List<Map<String, Object>> execute(){
@@ -62,7 +69,11 @@ public abstract class SQLStream {
                 Map<String, Object> row = new HashMap<>();
                 for (int i = 0; true; i++) {
                     try {
-                        row.put(data.select.get(i), resultSet.getObject(i + 1));
+                        String columnName = data.select.get(i);
+                        if (columnName.contains(" AS ")){
+                            columnName = columnName.substring(columnName.indexOf(" AS ") + 4);
+                        }
+                        row.put(columnName, resultSet.getObject(i + 1));
                     } catch (IndexOutOfBoundsException | SQLException e){
                         break;
                     }

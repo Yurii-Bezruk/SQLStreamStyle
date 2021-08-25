@@ -3,11 +3,32 @@ package com.striker.sqlstream;
 
 import com.striker.tableproxies.Table;
 
+import java.util.stream.Stream;
+
 public class FromStream extends WhereStream {
     protected FromStream(SQLStreamData data) {
         super(data);
     }
 
+    public FromStream JOIN(Table... tables){
+        return INNER_JOIN(tables);
+    }
+    public FromStream JOIN(String... tables){
+        return INNER_JOIN(tables);
+    }
+    public JoinStream JOIN(Table table){
+        return INNER_JOIN(table);
+    }
+    public JoinStream JOIN(String table){
+        return INNER_JOIN(table);
+    }
+    public FromStream INNER_JOIN(Table... tables){
+        return INNER_JOIN(Stream.of(tables).map(Table::getTableName).toArray(String[]::new));
+    }
+    public FromStream INNER_JOIN(String... tables){
+        data.from.append(" INNER JOIN ").append(String.join(", ", tables));
+        return this;
+    }
     public JoinStream INNER_JOIN(Table table){
         return INNER_JOIN(table.getTableName());
     }
