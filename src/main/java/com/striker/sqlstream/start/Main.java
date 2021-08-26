@@ -1,13 +1,9 @@
-package com.striker.start;
+package com.striker.sqlstream.start;
 
-import com.striker.sqlstream.SQLStream;
-import com.striker.sqlstream.SelectOption;
+import com.striker.sqlstream.stream.SQLStream;
 
-import java.util.List;
-import java.util.Map;
-
-import static com.striker.tableproxies.Tables.*;
-import static com.striker.sqlstream.SelectOption.*;
+import static com.striker.sqlstream.tableproxies.Tables.*;
+import static com.striker.sqlstream.help.SelectOptions.*;
 
 public class Main {
     public static void main(String[] args) {

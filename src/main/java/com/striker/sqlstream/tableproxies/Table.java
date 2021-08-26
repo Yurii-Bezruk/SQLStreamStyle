@@ -1,4 +1,4 @@
-package com.striker.tableproxies;
+package com.striker.sqlstream.tableproxies;
 
 public class Table {
     private final String _TABLE_NAME_;

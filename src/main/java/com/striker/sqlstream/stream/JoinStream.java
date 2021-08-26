@@ -1,4 +1,4 @@
-package com.striker.sqlstream;
+package com.striker.sqlstream.stream;
 
 public class JoinStream extends FromStream {
     protected JoinStream(SQLStreamData data) {

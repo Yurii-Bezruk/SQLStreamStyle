@@ -1,7 +1,8 @@
-package com.striker.sqlstream;
+package com.striker.sqlstream.stream;
 
-import com.striker.start.TableMapper;
-import com.striker.tableproxies.Table;
+import com.striker.sqlstream.help.SelectOptions.SelectOption;
+import com.striker.sqlstream.start.TableMapper;
+import com.striker.sqlstream.tableproxies.Table;
 
 import java.sql.*;
 import java.util.*;
@@ -75,7 +76,7 @@ public abstract class SQLStream {
             ) + ";";
     }
 
-    public ResultSet execute(){
+    public com.striker.sqlstream.help.ResultSet execute(){
         List<Map<String, Object>> rows = null;
         try(Connection connection = DriverManager.getConnection(URL);
             Statement statement = connection.createStatement();
@@ -99,7 +100,7 @@ public abstract class SQLStream {
         } catch (SQLException throwable) {
             throwable.printStackTrace();
         }
-        return new ResultSet(rows);
+        return new com.striker.sqlstream.help.ResultSet(rows);
     }
 
     protected static class SQLStreamData {

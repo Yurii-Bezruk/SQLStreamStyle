@@ -1,9 +1,8 @@
-package com.striker.sqlstream;
+package com.striker.sqlstream.stream;
 
-import com.striker.tableproxies.Table;
+import com.striker.sqlstream.help.ResultSet;
+import com.striker.sqlstream.tableproxies.Table;
 
-import java.util.List;
-import java.util.Map;
 import java.util.stream.Stream;
 
 public class SelectStream extends SQLStream {

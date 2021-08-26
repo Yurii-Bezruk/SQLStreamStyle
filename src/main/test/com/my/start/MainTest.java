@@ -1,7 +1,7 @@
 package com.striker.start;
 
-import com.striker.sqlstream.SQLStream;
-import com.striker.sqlstream.SelectStream;
+import com.striker.stream.SQLStream;
+import com.striker.stream.SelectStream;
 import org.junit.Assert;
 import org.junit.Test;
 import org.mockito.Mockito;
@@ -9,8 +9,6 @@ import org.mockito.Mockito;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-
-import static com.striker.tableproxies.Tables.*;
 
 public class MainTest {
 

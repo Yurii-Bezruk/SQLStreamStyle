@@ -1,19 +1,20 @@
-package com.striker.sqlstream;
+package com.striker.sqlstream.help;
 
-public class SelectOption {
+public class SelectOptions {
     public static DistinctOption DISTINCT = new DistinctOption("DISTINCT");
     public static DistinctOption DISTINCTROW = new DistinctOption("DISTINCTROW");
     public static DistinctOption ALL = new DistinctOption("ALL");
     public static StraightJoinOption STRAIGHT_JOIN = new StraightJoinOption("STRAIGHT_JOIN");
 
-    protected String name;
-    private SelectOption(String name) {
-        this.name = name;
+    public abstract static class SelectOption {
+        protected String name;
+        private SelectOption(String name) {
+            this.name = name;
+        }
+        public String getName() {
+            return name;
+        }
     }
-    public String getName() {
-        return name;
-    }
-
     public static class DistinctOption extends SelectOption {
         public StraightJoinOption STRAIGHT_JOIN = new StraightJoinOption("STRAIGHT_JOIN");
         public DistinctOption(String name) {

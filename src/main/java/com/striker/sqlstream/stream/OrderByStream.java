@@ -1,4 +1,4 @@
-package com.striker.sqlstream;
+package com.striker.sqlstream.stream;
 
 public class OrderByStream extends SQLStream {
     protected OrderByStream(SQLStreamData data) {

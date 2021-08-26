@@ -1,4 +1,4 @@
-package com.striker.sqlstream;
+package com.striker.sqlstream.help;
 
 import java.util.List;
 import java.util.Map;

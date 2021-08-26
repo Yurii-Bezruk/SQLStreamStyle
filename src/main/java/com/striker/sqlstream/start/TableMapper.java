@@ -1,4 +1,4 @@
-package com.striker.start;
+package com.striker.sqlstream.start;
 
 import java.io.*;
 import java.sql.*;
@@ -66,7 +66,7 @@ public class TableMapper {
         return tables;
     }
     private static void createMappedTablesJavaFile(Map<String, List<String>> tableData) {
-        try (PrintWriter writer = new PrintWriter( sourceFolder + "/com/striker/tableproxies/Tables.java")){
+        try (PrintWriter writer = new PrintWriter( sourceFolder + "/com/striker/sqlstream/sqlstream/tableproxies/Tables.java")){
             writer.print(
                 "package com.striker.tableproxies;\n\n" +
                 "public final class Tables {\n\n");
