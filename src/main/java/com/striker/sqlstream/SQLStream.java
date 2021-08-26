@@ -18,6 +18,22 @@ public abstract class SQLStream {
         this.data = data;
     }
 
+
+    public static SelectStream SELECT(SelectOption options, Table.SelectableColumn... columns){
+        SelectStream stream = SELECT(columns);
+        stream.data.selectOptions = options.getName();
+        return stream;
+    }
+    public static SelectStream SELECT(SelectOption options, Table.Column... columns){
+        SelectStream stream = SELECT(columns);
+        stream.data.selectOptions = options.getName();
+        return stream;
+    }
+    public static SelectStream SELECT(SelectOption options, String... columns){
+        SelectStream stream = SELECT(columns);
+        stream.data.selectOptions = options.getName();
+        return stream;
+    }
     public static SelectStream SELECT(Table.SelectableColumn... columns){
         return SELECT(Stream.of(columns).map(Table.SelectableColumn::getColumnName).toArray(String[]::new));
     }
@@ -32,7 +48,7 @@ public abstract class SQLStream {
 
     @Override
     public String toString() {
-        return "SELECT " +
+        return "SELECT " + data.selectOptions + " " +
             String.join(", ", data.select) + " " +
             String.join(" ",
                 data.from,
@@ -44,7 +60,7 @@ public abstract class SQLStream {
     }
 
     public String toFormattedString() {
-        return "SELECT " +
+        return "SELECT " + data.selectOptions + " " +
             String.join(", ", data.select) + "\n" +
             String.join("\n",
                 Stream.of(
@@ -88,6 +104,7 @@ public abstract class SQLStream {
 
     protected static class SQLStreamData {
         List<String> select = new ArrayList<>();
+        String selectOptions = "";
         StringBuilder from = new StringBuilder("FROM ");
         String where = "";
         String groupBy = "";
