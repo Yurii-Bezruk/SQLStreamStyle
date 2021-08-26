@@ -59,11 +59,11 @@ public abstract class SQLStream {
             ) + ";";
     }
 
-    public List<Map<String, Object>> execute(){
+    public ResultSet execute(){
         List<Map<String, Object>> rows = null;
         try(Connection connection = DriverManager.getConnection(URL);
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery(toString())){
+            java.sql.ResultSet resultSet = statement.executeQuery(toString())){
             rows = new ArrayList<>();
             while(resultSet.next()){
                 Map<String, Object> row = new HashMap<>();
@@ -83,7 +83,7 @@ public abstract class SQLStream {
         } catch (SQLException throwable) {
             throwable.printStackTrace();
         }
-        return rows;
+        return new ResultSet(rows);
     }
 
     protected static class SQLStreamData {

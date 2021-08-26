@@ -10,16 +10,13 @@ import static com.striker.tableproxies.Tables.*;
 
 public class Main {
     public static void main(String[] args) {
-        List<Map<String, Object>> result;
         SQLStream stream = SQLStream
-                .SELECT("*")
-                .FROM(user_with_dep, department)
-                .JOIN(country)
-                .WHERE("user_with_dep.id > 1")
-                .ORDER_BY(department.name.DESC());
+                .SELECT(user_with_dep.name, department.name)
+                .FROM(user_with_dep)
+                .STRAIGHT_JOIN(department)
+                .ON("user_with_dep.department = department.id");
+        System.out.println(stream.execute());
         System.out.println(stream.toFormattedString());
-        result = stream.execute();
-        result.forEach(System.out::println);
-        TableMapper.map();
+
     }
 }

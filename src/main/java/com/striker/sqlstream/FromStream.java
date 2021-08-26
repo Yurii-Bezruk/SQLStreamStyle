@@ -51,6 +51,27 @@ public class FromStream extends WhereStream {
         return new JoinStream(data);
     }
 
+    public FromStream STRAIGHT_JOIN(Table... tables){
+        return STRAIGHT_JOIN(Stream.of(tables).map(Table::getTableName).toArray(String[]::new));
+    }
+    public FromStream STRAIGHT_JOIN(String... tables){
+        data.from.append(" STRAIGHT_JOIN ").append(String.join(", ", tables));
+        return this;
+    }
+    public JoinStream STRAIGHT_JOIN(Table table){
+        return STRAIGHT_JOIN(table.getTableName());
+    }
+    public JoinStream STRAIGHT_JOIN(String table){
+        data.from.append(" STRAIGHT_JOIN ").append(table);
+        return new JoinStream(data);
+    }
+
+    public JoinStrictStream LEFT_OUTER_JOIN(Table table){
+        return LEFT_JOIN(table);
+    }
+    public JoinStrictStream LEFT_OUTER_JOIN(String table){
+        return LEFT_JOIN(table);
+    }
     public JoinStrictStream LEFT_JOIN(Table table){
         return LEFT_JOIN(table.getTableName());
     }
@@ -59,6 +80,12 @@ public class FromStream extends WhereStream {
         return new JoinStrictStream(data);
     }
 
+    public JoinStrictStream RIGHT_OUTER_JOIN(Table table){
+        return RIGHT_JOIN(table);
+    }
+    public JoinStrictStream RIGHT_OUTER_JOIN(String table){
+        return RIGHT_JOIN(table);
+    }
     public JoinStrictStream RIGHT_JOIN(Table table){
         return RIGHT_JOIN(table.getTableName());
     }

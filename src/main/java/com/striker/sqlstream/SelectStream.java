@@ -18,7 +18,7 @@ public class SelectStream extends SQLStream {
 
     @Override
     @Deprecated
-    public List<Map<String, Object>> execute() {
+    public ResultSet execute() {
         throw new UnsupportedOperationException("cannot execute SQL statement with only SELECT part");
     }
 }
