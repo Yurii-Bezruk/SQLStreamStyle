@@ -9,9 +9,6 @@ public class HavingStream extends OrderByStream {
         super(data);
     }
 
-    public OrderByStream ORDER_BY(Table.Column... columns){
-        return ORDER_BY(Stream.of(columns).map(Table.Column::getColumnName).toArray(String[]::new));
-    }
     public OrderByStream ORDER_BY(Table.OrderableColumn... columns){
         return ORDER_BY(Stream.of(columns).map(Table.OrderableColumn::getColumnName).toArray(String[]::new));
     }

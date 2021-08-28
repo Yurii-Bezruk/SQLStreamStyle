@@ -25,11 +25,6 @@ public abstract class SQLStream {
         stream.data.selectOptions = options.getName();
         return stream;
     }
-    public static SelectStream SELECT(SelectOption options, Table.Column... columns){
-        SelectStream stream = SELECT(columns);
-        stream.data.selectOptions = options.getName();
-        return stream;
-    }
     public static SelectStream SELECT(SelectOption options, String... columns){
         SelectStream stream = SELECT(columns);
         stream.data.selectOptions = options.getName();

@@ -1,6 +1,6 @@
 package com.striker.sqlstream.help;
 
-public class SelectOptions {
+public final class SelectOptions {
     public static HighPriorityOption HIGH_PRIORITY = new HighPriorityOption();
     public static StraightJoinOption STRAIGHT_JOIN = new StraightJoinOption();
     public static SqlBigResultOption SQL_BIG_RESULT = new SqlBigResultOption();
