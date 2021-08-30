@@ -1,9 +1,8 @@
 package com.striker.sqlstream.stream;
 
-import com.striker.sqlstream.help.SelectOptions.SelectOption;
 import com.striker.sqlstream.start.TableMapper;
 import com.striker.sqlstream.tableproxies.Table;
-
+import com.striker.sqlstream.help.SelectOptions.SelectOption;
 import java.sql.*;
 import java.util.*;
 import java.util.stream.Stream;

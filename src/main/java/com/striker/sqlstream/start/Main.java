@@ -9,7 +9,7 @@ import static com.striker.sqlstream.help.SelectOptions.*;
 public class Main {
     public static void main(String[] args) {
         SQLStream stream = SQLStream
-                .SELECT(HIGH_PRIORITY.ALL.SQL_BIG_RESULT.STRAIGHT_JOIN.SQL_BUFFER_RESULT.SQL_SMALL_RESULT,
+                .SELECT(SQL_BIG_RESULT.HIGH_PRIORITY.SQL_BUFFER_RESULT.SQL_SMALL_RESULT.STRAIGHT_JOIN.DISTINCTROW,
                         user_with_dep.name.AS("j"), ABS(department.name))
                 .FROM(user_with_dep)
                 .STRAIGHT_JOIN(department)

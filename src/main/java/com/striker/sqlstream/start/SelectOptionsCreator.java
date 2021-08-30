@@ -65,7 +65,7 @@ public class SelectOptionsCreator {
                     "        }\n" +
                     "    }"
             );
-            printClasses(classes, commands, null,1, true);
+            printClasses(classes, commands, "",1, true);
             writer.println("}");
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -82,7 +82,7 @@ public class SelectOptionsCreator {
         }
         return builder.toString();
     }
-    private static void printClasses(List<String> classes, List<String> commands, String parent, int deep, boolean isStatic){
+    private static void printClasses(List<String> classes, List<String> commands, String getNameContent, int deep, boolean isStatic){
         if(classes.size() == 0)
             return;
         for (int i = 0; i < classes.size(); i++) {
@@ -92,8 +92,12 @@ public class SelectOptionsCreator {
             List<String> newCommands = new ArrayList<>(commands);
             newClasses.remove(i);
             newCommands.remove(i);
+            String newGetNameContent = commands.get(i).equals("DISTINCT") ?
+                "\"+"+classes.get(i)+".this.getRealName()+\"" :
+                    commands.get(i);
+            newGetNameContent = getNameContent + newGetNameContent + " ";
             printFields(newClasses, newCommands, deep + 1);
-            printClasses(newClasses, newCommands, classes.get(i),deep + 1, false);
+            printClasses(newClasses, newCommands, newGetNameContent,deep + 1, false);
             if(classes.get(i).equals("DistinctOption")){
                 writer.println(
                     tabs(deep + 1)+"public "+classes.get(i)+"(String name) {\n" +
@@ -108,13 +112,22 @@ public class SelectOptionsCreator {
                     tabs(deep + 1)+"}"
                 );
             }
-            //if(removedCommands.size() != 0){
-            if(parent != null){
-                //removedCommands.add(commands.get(i));
+            if(! getNameContent.equals("")){
                 writer.println(
                     tabs(deep + 1)+"@Override\n" +
                     tabs(deep + 1)+"public String getName() {\n" +
-                    tabs(deep + 1)+"    return "+parent+".this.getName() + \" \" + super.getName();\n" +
+                    tabs(deep + 1)+"    return \""+getNameContent +
+                            (commands.get(i).equals("DISTINCT") ?
+                            "\"+"+classes.get(i)+".this.getRealName()+\"" :
+                            commands.get(i)) +
+                            "\";\n" +
+                    tabs(deep + 1)+"}"
+                );
+            }
+            if(classes.get(i).equals("DistinctOption")){
+                writer.println(
+                    tabs(deep + 1)+"public String getRealName() {\n" +
+                    tabs(deep + 1)+"    return this.name;\n" +
                     tabs(deep + 1)+"}"
                 );
             }
