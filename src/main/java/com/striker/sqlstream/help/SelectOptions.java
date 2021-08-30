@@ -9,7 +9,7 @@ public final class SelectOptions {
     public static DistinctOption DISTINCT = new DistinctOption("DISTINCT");
     public static DistinctOption DISTINCTROW = new DistinctOption("DISTINCTROW");
     public static DistinctOption ALL = new DistinctOption("ALL");
-
+    private SelectOptions(){}
 
     public abstract static class SelectOption {
         protected String name;
