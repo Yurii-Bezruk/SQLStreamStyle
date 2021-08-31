@@ -95,6 +95,9 @@ public class FromStream extends WhereStream {
     }
 
     //TODO polymorphic calls to WHERE
+    public WhereStream WHERE(Table.Column condition){
+        return WHERE(condition.getColumnName());
+    }
     public WhereStream WHERE(String condition){
         data.where = "WHERE " + condition;
         return new WhereStream(data);

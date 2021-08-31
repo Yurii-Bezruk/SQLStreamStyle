@@ -14,7 +14,7 @@ public class Main {
                 .FROM(user_with_dep)
                 .STRAIGHT_JOIN(department)
                 .ON(user_with_dep.department.equalTo(department.id))
-                .ORDER_BY(user_with_dep.name);
+                .WHERE(user_with_dep.id.BETWEEN(1).AND(2));
         System.out.println(stream.toFormattedString());
         System.out.println(stream.execute());
 

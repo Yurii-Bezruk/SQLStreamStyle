@@ -4,11 +4,18 @@ import com.striker.sqlstream.tableproxies.Table;
 import com.striker.sqlstream.tableproxies.Table.Column;
 
 public final class Functions {
+    //TODO CASE operator
     public static Column ABS(Column column){
         return functionTo("ABS", column);
     }
     public static Column AVG(Column column){
         return functionTo("AVG", column);
+    }
+    public static Column CEIL(Column column){
+        return functionTo("CEIL", column);
+    }
+    public static Column CEILING(Column column){
+        return functionTo("CEILING", column);
     }
 
     private static Column functionTo(String function, Column column){

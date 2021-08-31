@@ -56,13 +56,13 @@ public class Table {
         public Column bitwiseXor(String column){
             return operation("^", column);
         }
-        public Column and(Table.Column column){
+        public Column AND(Table.Column column){
             return operation("AND", column.getColumnName());
         }
-        public Column and(Number number){
+        public Column AND(Number number){
             return operation("AND", number.toString());
         }
-        public Column and(String column){
+        public Column AND(String column){
             return operation("AND", column);
         }
         public Column greaterThan(Table.Column column){
@@ -146,14 +146,14 @@ public class Table {
         public Column leftShift(String column){
             return operation("<<", column);
         }
-        public Column mod(Table.Column column){
-            return operation("mod", column.getColumnName());
+        public Column MOD(Table.Column column){
+            return operation("MOD", column.getColumnName());
         }
-        public Column mod(Number number){
-            return operation("mod", number.toString());
+        public Column MOD(Number number){
+            return operation("MOD", number.toString());
         }
-        public Column mod(String column){
-            return operation("mod", column);
+        public Column MOD(String column){
+            return operation("MOD", column);
         }
         public Column plus(Table.Column column){
             return operation("+", column.getColumnName());
@@ -191,6 +191,16 @@ public class Table {
         public Column divide(String column){
             return operation("/", column);
         }
+        public BetweenColumn BETWEEN(Table.Column column){
+            return BETWEEN(column.getColumnName());
+        }
+        public BetweenColumn BETWEEN(Number number){
+            return BETWEEN(number.toString());
+        }
+        public BetweenColumn BETWEEN(String column){
+            return new BetweenColumn(_COLUMN_NAME_ + " BETWEEN " + column);
+        }
+
 
         public Column operation(String operation, Table.Column operand) {
             return operation(operation, operand.getColumnName());
@@ -234,6 +244,23 @@ public class Table {
         @Override
         public String getColumnName() {
             return _TABLE_NAME_ + "." +  _COLUMN_NAME_;
+        }
+    }
+    public class BetweenColumn {
+        protected String _COLUMN_NAME_;
+
+        public BetweenColumn(String name) {
+            _COLUMN_NAME_ = name;
+        }
+
+        public Column AND(Column column){
+            return AND(column.getColumnName());
+        }
+        public Column AND(Number number){
+            return AND(number.toString());
+        }
+        public Column AND(String column){
+            return new Column(_COLUMN_NAME_ + " AND " + column);
         }
     }
 
