@@ -4,7 +4,6 @@ import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class SelectOptionsCreator {
     private static final String HIGH_PRIORITY = "HIGH_PRIORITY";
@@ -13,8 +12,6 @@ public class SelectOptionsCreator {
     private static final String SQL_SMALL_RESULT = "SQL_SMALL_RESULT";
     private static final String SQL_BUFFER_RESULT = "SQL_BUFFER_RESULT";
     private static final String DISTINCT = "DISTINCT";
-    private static final String DISTINCTROW = "DISTINCTROW";
-    private static final String ALL = "ALL";
     private static final List<String> commands = new ArrayList<String>(){{
         add(HIGH_PRIORITY);
         add(STRAIGHT_JOIN);
@@ -22,8 +19,6 @@ public class SelectOptionsCreator {
         add(SQL_SMALL_RESULT);
         add(SQL_BUFFER_RESULT);
         add(DISTINCT);
-//        add(DISTINCTROW);
-//        add(ALL);
     }};
     private static final String HighPriorityOption = "HighPriorityOption";
     private static final String StraightJoinOption = "StraightJoinOption";
@@ -49,10 +44,10 @@ public class SelectOptionsCreator {
                 writer.println("    public static "+classes.get(i)+" "+commands.get(i)+" = new "+classes.get(i)+"();");
             }
             writer.println(
-                    "    public static DistinctOption DISTINCT = new DistinctOption(\""+DISTINCT+"\");\n" +
-                            "    public static DistinctOption DISTINCTROW = new DistinctOption(\""+DISTINCTROW+"\");\n" +
-                            "    public static DistinctOption ALL = new DistinctOption(\""+ALL+"\");\n" +
-                            "    private SelectOptions(){}"
+                    "    public static DistinctOption DISTINCT = new DistinctOption(\"DISTINCT\");\n" +
+                    "    public static DistinctOption DISTINCTROW = new DistinctOption(\"DISTINCTROW\");\n" +
+                    "    public static DistinctOption ALL = new DistinctOption(\"ALL\");\n" +
+                    "    private SelectOptions(){}"
             );
             writer.println( "\n"+
                     "    public abstract static class SelectOption {\n" +
