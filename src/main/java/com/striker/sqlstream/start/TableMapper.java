@@ -66,9 +66,9 @@ public class TableMapper {
         return tables;
     }
     private static void createMappedTablesJavaFile(Map<String, List<String>> tableData) {
-        try (PrintWriter writer = new PrintWriter( sourceFolder + "/com/striker/sqlstream/sqlstream/tableproxies/Tables.java")){
+        try (PrintWriter writer = new PrintWriter( sourceFolder + "/com/striker/sqlstream/tableproxies/Tables.java")){
             writer.print(
-                "package com.striker.tableproxies;\n\n" +
+                "package com.striker.sqlstream.tableproxies;\n\n" +
                 "public final class Tables {\n\n");
             for (String table : tableData.keySet()) {
                 writer.printf("\tpublic static final %sTable %s = new %sTable();\n", table, table, table);
